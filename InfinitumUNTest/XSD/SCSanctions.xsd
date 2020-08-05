@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<x:schema xmlns:x="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  
+  
+  
+  <x:element name="CONSOLIDATED_LIST">
+    <x:complexType>
+      <x:sequence>
+        <x:element ref="INDIVIDUALS"/>
+        <x:element ref="ENTITIES"/>
+      </x:sequence>
+      <x:attribute name="dateGenerated" use="required" type="x:dateTime"/>
+    </x:complexType>
+  </x:element>
+  <x:element name="INDIVIDUALS">
+    <x:complexType>
+      <x:sequence>
+        <x:element maxOccurs="unbounded" ref="INDIVIDUAL"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="INDIVIDUAL">
+    <x:complexType>
+      <x:sequence>
+        <x:element ref="DATAID"/>
+        <x:element ref="VERSIONNUM"/>
+        <x:element ref="FIRST_NAME"/>
+        <x:element minOccurs="0" ref="SECOND_NAME"/>
+        <x:element minOccurs="0" ref="THIRD_NAME"/>
+        <x:element minOccurs="0" ref="FOURTH_NAME"/>
+        <x:element ref="UN_LIST_TYPE"/>
+        <x:element ref="REFERENCE_NUMBER"/>
+        <x:element ref="LISTED_ON"/>
+        <x:element ref="GENDER" minOccurs="0"/>
+        <x:element ref="SUBMITTED_BY" minOccurs="0"/>
+        <x:element minOccurs="0" ref="NAME_ORIGINAL_SCRIPT"/>
+        <x:element ref="COMMENTS1"/>
+        <x:element minOccurs="0" ref="NATIONALITY2"/>
+        <x:element minOccurs="0" ref="TITLE"/>
+        <x:element minOccurs="0" ref="DESIGNATION"/>
+        <x:element minOccurs="0" ref="NATIONALITY"/>
+        <x:element ref="LIST_TYPE"/>
+        <x:element minOccurs="0" ref="LAST_DAY_UPDATED"/>
+        <x:element maxOccurs="unbounded" ref="INDIVIDUAL_ALIAS"/>
+        <x:element maxOccurs="unbounded" ref="INDIVIDUAL_ADDRESS"/>
+        <x:element maxOccurs="unbounded" ref="INDIVIDUAL_DATE_OF_BIRTH"/>
+        <x:element maxOccurs="unbounded" ref="INDIVIDUAL_PLACE_OF_BIRTH"/>
+        <x:element maxOccurs="unbounded" ref="INDIVIDUAL_DOCUMENT"/>
+        <x:element ref="SORT_KEY"/>
+        <x:element ref="SORT_KEY_LAST_MOD"/>
+        <x:element minOccurs="0" ref="DELISTED_ON"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  <x:element name="SECOND_NAME" type="x:string" default="na"/>
+  <x:element name="THIRD_NAME" type="x:string" default="na"/>
+  <x:element name="FOURTH_NAME" type="x:string" default="na"/>
+  <x:element name="GENDER" type="x:NCName"/>
+  <x:element name="SUBMITTED_BY" type="x:string"/>
+  <x:element name="NATIONALITY2" type="x:string"/>
+  
+  
+  <x:element name="TITLE">
+    <x:complexType>
+      <x:sequence>
+        <x:element maxOccurs="unbounded" ref="VALUE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="DESIGNATION">
+    <x:complexType>
+      <x:sequence>
+        <x:element maxOccurs="unbounded" ref="VALUE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="NATIONALITY">
+    <x:complexType>
+      <x:sequence>
+        <x:element maxOccurs="unbounded" ref="VALUE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  
+  
+  
+  <x:element name="INDIVIDUAL_ALIAS">
+    <x:complexType>
+      <x:sequence>
+        <x:element ref="QUALITY"/>
+        <x:element ref="ALIAS_NAME"/>
+        <x:element minOccurs="0" ref="DATE_OF_BIRTH"/>
+        <x:element minOccurs="0" ref="CITY_OF_BIRTH"/>
+        <x:element minOccurs="0" ref="COUNTRY_OF_BIRTH"/>
+        <x:element minOccurs="0" ref="NOTE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  
+  
+  
+  <x:element name="DATE_OF_BIRTH" type="x:string"/>
+  <x:element name="CITY_OF_BIRTH" type="x:string"/>
+  <x:element name="COUNTRY_OF_BIRTH" type="x:string"/>
+  
+  
+  <x:element name="INDIVIDUAL_ADDRESS">
+    <x:complexType>
+      <x:sequence>
+        <x:element ref="STREET" minOccurs="0"/>
+        <x:element minOccurs="0" ref="CITY"/>
+        <x:element ref="STATE_PROVINCE" minOccurs="0"/>
+        <x:element ref="ZIP_CODE" minOccurs="0"/>
+        <x:element ref="COUNTRY"/>
+        <x:element ref="NOTE" minOccurs="0"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="INDIVIDUAL_DATE_OF_BIRTH">
+    <x:complexType>
+      <x:sequence>
+        <x:element minOccurs="0" ref="TYPE_OF_DATE"/>
+        <x:element minOccurs="0" ref="NOTE"/>
+        <x:choice minOccurs="0">
+          <x:element ref="DATE"/>
+          <x:element ref="YEAR"/>
+          <x:sequence>
+            <x:element ref="FROM_YEAR"/>
+            <x:element ref="TO_YEAR"/>
+          </x:sequence>
+        </x:choice>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  <x:element name="TYPE_OF_DATE" type="x:string"/>
+  <x:element name="DATE" type="x:date"/>
+  
+  
+  <x:element name="YEAR">
+    <x:simpleType>
+      <x:restriction base="x:integer">
+        <x:pattern value="[1-9][0-9][0-9][0-9]"/>
+        <x:minInclusive value="1900"/>
+        <x:maxInclusive value="2200"/>
+      </x:restriction>
+    </x:simpleType>
+  </x:element>
+  <x:element name="FROM_YEAR">
+    <x:simpleType>
+      <x:restriction base="x:integer">
+        <x:pattern value="[1-9][0-9][0-9][0-9]"/>
+        <x:minInclusive value="1900"/>
+        <x:maxInclusive value="2200"/>
+      </x:restriction>
+    </x:simpleType>
+  </x:element>
+  <x:element name="TO_YEAR">
+    <x:simpleType>
+      <x:restriction base="x:integer">
+        <x:pattern value="[1-9][0-9][0-9][0-9]"/>
+        <x:minInclusive value="1900"/>
+        <x:maxInclusive value="2200"/>
+      </x:restriction>
+    </x:simpleType>
+  </x:element>
+  <x:element name="INDIVIDUAL_PLACE_OF_BIRTH">
+    <x:complexType>
+      <x:sequence>
+        <x:element minOccurs="0" ref="CITY"/>
+        <x:element minOccurs="0" ref="STATE_PROVINCE"/>
+        <x:element minOccurs="0" ref="COUNTRY"/>
+        <x:element minOccurs="0" ref="NOTE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="INDIVIDUAL_DOCUMENT">
+    <x:complexType>
+      <x:sequence>
+        <x:element minOccurs="0" ref="TYPE_OF_DOCUMENT"/>
+        <x:element minOccurs="0" ref="TYPE_OF_DOCUMENT2"/>
+        <x:element minOccurs="0" ref="NUMBER"/>
+        <x:element minOccurs="0" ref="ISSUING_COUNTRY"/>
+        <x:element minOccurs="0" ref="DATE_OF_ISSUE"/>
+        <x:element minOccurs="0" ref="CITY_OF_ISSUE"/>
+        <x:element minOccurs="0" ref="COUNTRY_OF_ISSUE"/>
+        <x:element minOccurs="0" ref="NOTE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  <x:element name="TYPE_OF_DOCUMENT" type="x:string"/>
+  <x:element name="TYPE_OF_DOCUMENT2" type="x:string"/>
+  <x:element name="NUMBER" type="x:string"/>
+  <x:element name="ISSUING_COUNTRY" type="x:string"/>
+  <x:element name="DATE_OF_ISSUE" type="x:string"/>
+  <x:element name="CITY_OF_ISSUE" type="x:string"/>
+  <x:element name="COUNTRY_OF_ISSUE" type="x:string"/>
+  
+  
+  <x:element name="ENTITIES">
+    <x:complexType>
+      <x:sequence>
+        <x:element maxOccurs="unbounded" ref="ENTITY"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="ENTITY">
+    <x:complexType>
+      <x:sequence>
+        <x:element ref="DATAID"/>
+        <x:element ref="VERSIONNUM"/>
+        <x:element ref="FIRST_NAME"/>
+        <x:element ref="UN_LIST_TYPE"/>
+        <x:element ref="REFERENCE_NUMBER"/>
+        <x:element ref="LISTED_ON"/>
+        <x:element minOccurs="0" ref="SUBMITTED_ON"/>
+        <x:element minOccurs="0" ref="NAME_ORIGINAL_SCRIPT"/>
+        <x:element ref="COMMENTS1"/>
+        <x:element ref="LIST_TYPE"/>
+        <x:element minOccurs="0" ref="LAST_DAY_UPDATED"/>
+        <x:element maxOccurs="unbounded" ref="ENTITY_ALIAS"/>
+        <x:element maxOccurs="unbounded" ref="ENTITY_ADDRESS"/>
+        <x:element ref="SORT_KEY"/>
+        <x:element ref="SORT_KEY_LAST_MOD"/>
+        <x:element minOccurs="0" ref="DELISTED_ON"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  <x:element name="SUBMITTED_ON" type="x:date"/>
+  
+  
+  <x:element name="ENTITY_ALIAS">
+    <x:complexType>
+      <x:sequence minOccurs="0">
+        <x:element ref="QUALITY"/>
+        <x:element ref="ALIAS_NAME"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="ENTITY_ADDRESS">
+    <x:complexType>
+      <x:sequence>
+        <x:element minOccurs="0" ref="STREET"/>
+        <x:element minOccurs="0" ref="CITY"/>
+        <x:element minOccurs="0" ref="STATE_PROVINCE"/>
+        <x:element minOccurs="0" ref="ZIP_CODE"/>
+        <x:element minOccurs="0" ref="COUNTRY"/>
+        <x:element minOccurs="0" ref="NOTE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  <x:element name="DATAID" type="x:integer" default="000000"/>
+  <x:element name="VERSIONNUM" type="x:integer" default="1"/>
+  <x:element name="FIRST_NAME" type="x:string"/>
+  <x:element name="UN_LIST_TYPE" type="x:NCName"/>
+  <x:element name="REFERENCE_NUMBER" type="x:NCName"/>
+  <x:element name="LISTED_ON" type="x:date"/>
+  <x:element name="NAME_ORIGINAL_SCRIPT" type="x:string"/>
+  <x:element name="COMMENTS1" type="x:string"/>
+  <x:element name="VALUE" type="x:string"/>
+  
+  
+  <x:element name="LIST_TYPE">
+    <x:complexType>
+      <x:sequence>
+        <x:element ref="VALUE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  <x:element name="LAST_DAY_UPDATED">
+    <x:complexType>
+      <x:sequence>
+        <x:element maxOccurs="unbounded" ref="VALUE"/>
+      </x:sequence>
+    </x:complexType>
+  </x:element>
+  
+  
+  <x:element name="QUALITY" type="x:string"/>
+  <x:element name="ALIAS_NAME" type="x:string"/>
+  <x:element name="NOTE" type="x:string"/>
+  <x:element name="STREET" type="x:string"/>
+  <x:element name="CITY" type="x:string"/>
+  <x:element name="STATE_PROVINCE" type="x:string"/>
+  <x:element name="ZIP_CODE" type="x:string"/>
+  <x:element name="COUNTRY" type="x:string"/>
+  <x:element name="SORT_KEY" type="x:string"/>
+  <x:element name="SORT_KEY_LAST_MOD" type="x:string"/>
+  <x:element name="DELISTED_ON" type="x:date"/>
+  
+  
+</x:schema>
