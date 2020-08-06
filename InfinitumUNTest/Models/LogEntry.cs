@@ -51,7 +51,6 @@ namespace InfinitumUNTest.Models
     /// <summary>
     /// Текст сообщения.
     /// </summary>
-    [MaxLength(250)]
     public string Content { get; set; }
 
   }  
