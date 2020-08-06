@@ -52,8 +52,8 @@ namespace InfinitumUNTest.WebApi.Data
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-      builder.UseLazyLoadingProxies().UseSqlite("Data Source=InfTest.db");
-      //builder.UseLazyLoadingProxies().UseNpgsql("Host=localhost;Port=5432;Database=InfTestDb");
+      //builder.UseLazyLoadingProxies().UseSqlite("Data Source=InfTest.db");
+      builder.UseLazyLoadingProxies().UseNpgsql("Host=localhost;Port=5432;Database=InfTest;Username=postgres;Password=postgres");
       builder.EnableDetailedErrors();
       builder.EnableSensitiveDataLogging();
     }

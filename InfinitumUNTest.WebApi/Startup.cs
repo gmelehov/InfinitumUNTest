@@ -52,7 +52,7 @@ namespace InfinitumUNTest.WebApi
       {
         // Используем ленивую загрузку связанных данных
         // Используем провайдера SQLite со строкой подключения, определенной в appsettings.json
-        opt.UseLazyLoadingProxies().UseSqlite(Configuration.GetConnectionString("InfTestConn"));
+        //opt.UseLazyLoadingProxies().UseSqlite(Configuration.GetConnectionString("InfTestConn"));
 
 
         // При использовании провайдера SqlServer изменить 
@@ -63,7 +63,7 @@ namespace InfinitumUNTest.WebApi
 
         // При использовании провайдера PostgreSql раскомментировать строчку ниже
         // и закомментировать строчки для SQLite и SqlServer.
-        //opt.UseLazyLoadingProxies().UseNpgsql(Configuration.GetConnectionString("InfTestPostgre"));
+        opt.UseLazyLoadingProxies().UseNpgsql(Configuration.GetConnectionString("InfTestPostgre"));
       });
 
       // Регистрируем сервис логгирования
